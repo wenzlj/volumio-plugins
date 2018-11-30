@@ -22,6 +22,9 @@ function rpiReceiver(context) {
 
 rpiReceiver.prototype.onVolumioStart = function()
 {
+
+	console.log("Im starting!");
+
 	var self = this;
 	var configFile=this.commandRouter.pluginManager.getConfigurationFile(this.context,'config.json');
 	this.config = new (require('v-conf'))();
@@ -110,7 +113,7 @@ rpiReceiver.prototype.setConf = function(varName, varValue) {
 rpiReceiver.prototype.addToBrowseSources = function () {
 
 	// Use this function to add your music service plugin to music sources
-    //var data = {name: 'Spotify', uri: 'spotify',plugin_type:'music_service',plugin_name:'spop'};
+    //var data = {name: 'rpi-receiver', uri: 'FM/AM-Radio',plugin_type:'music_service',plugin_name:'spop'};
     this.commandRouter.volumioAddToBrowseSources(data);
 };
 
