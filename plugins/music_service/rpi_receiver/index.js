@@ -20,8 +20,7 @@ function rpiReceiver(context) {
 
 
 
-rpiReceiver.prototype.onVolumioStart = function()
-{
+rpiReceiver.prototype.onVolumioStart = function() {
 
 	console.log("Im starting!");
 

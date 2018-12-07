@@ -1,21 +1,47 @@
+
+
 {
   "page": {
-    "label": "TRANSLATE.PLUGIN_CONFIGURATION"
+    "label": "Spotify Configuration"
   },
   "sections": [
     {
-      "id": "rpi_receiver",
-      "element": "button",
-      "label": "TRANSLATE.RPIReceiver",
-      "description": "TRANSLATE.RPIReceiver",
-      "icon": "fa-user",
+      "id": "section_account",
+      "element": "section",
+      "label": "Spotify account",
+      "icon": "fa-plug",
+      "onSave": {"type":"controller", "endpoint":"music_service/spop", "method":"saveSpotifyAccount"},
+      "saveButton": {
+        "label": "Save",
+        "data": [
+          "username",
+          "password",
+          "bitrate"
+        ]
+      },
       "content": [
         {
-          "id": "fm_radio_select",
-          "type": "text",
-          "doc": "TRANSLATE.RPIReceiver",
-          "label": "TRANSLATE.FM_Radio",
+          "id": "username",
+          "type":"text",
+          "element": "input",
+          "doc": "This is the username of your Spotify account",
+          "label": "Username",
           "value": ""
+        },
+        {
+          "id": "password",
+          "type":"password",
+          "element": "input",
+          "doc": "This is the password of your Spotify account",
+          "label": "Password",
+          "value": ""
+        },
+        {
+          "id":"bitrate",
+          "element": "switch",
+          "doc": "High bitrate",
+          "label": "Set for high bitrate",
+          "value": true
         }
       ]
     }
