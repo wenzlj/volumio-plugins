@@ -3,5 +3,21 @@
     "label": "TRANSLATE.PLUGIN_CONFIGURATION"
   },
   "sections": [
+    {
+      "id": "rpi_receiver",
+      "element": "button",
+      "label": "TRANSLATE.RPIReceiver",
+      "description": "TRANSLATE.RPIReceiver",
+      "icon": "fa-user",
+      "content": [
+        {
+          "id": "fm_radio_select",
+          "type": "text",
+          "doc": "TRANSLATE.RPIReceiver",
+          "label": "TRANSLATE.FM_Radio",
+          "value": ""
+        }
+      ]
+    }
   ]
 }

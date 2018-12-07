@@ -113,7 +113,7 @@ rpiReceiver.prototype.setConf = function(varName, varValue) {
 rpiReceiver.prototype.addToBrowseSources = function () {
 
 	// Use this function to add your music service plugin to music sources
-    //var data = {name: 'rpi-receiver', uri: 'FM/AM-Radio',plugin_type:'music_service',plugin_name:'spop'};
+    var data = {name: 'rpi-receiver', uri: 'FM/AM-Radio',plugin_type:'music_service',plugin_name:'spop'};
     this.commandRouter.volumioAddToBrowseSources(data);
 };
 
@@ -122,8 +122,7 @@ rpiReceiver.prototype.handleBrowseUri = function (curUri) {
 
     //self.commandRouter.logger.info(curUri);
     var response;
-
-
+    
     return response;
 };
 
@@ -243,19 +242,19 @@ rpiReceiver.prototype.search = function (query) {
 	return defer.promise;
 };
 
-rpiReceiver.prototype._searchArtists = function (results) {
+rpiReceiver.prototype.searchArtists = function (results) {
 
 };
 
-rpiReceiver.prototype._searchAlbums = function (results) {
+rpiReceiver.prototype.searchAlbums = function (results) {
 
 };
 
-rpiReceiver.prototype._searchPlaylists = function (results) {
+rpiReceiver.prototype.searchPlaylists = function (results) {
 
 
 };
 
-rpiReceiver.prototype._searchTracks = function (results) {
+rpiReceiver.prototype.searchTracks = function (results) {
 
 };
