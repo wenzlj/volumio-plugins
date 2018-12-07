@@ -1,49 +1,43 @@
-
-
 {
   "page": {
-    "label": "Spotify Configuration"
+    "label": "TRANSLATE.PLUGIN_CONFIGURATION"
   },
   "sections": [
     {
-      "id": "section_account",
+      "id": "section_settings",
       "element": "section",
-      "label": "Spotify account",
+      "label": "TRANSLATE.RPISETTINGS",
       "icon": "fa-plug",
-      "onSave": {"type":"controller", "endpoint":"music_service/spop", "method":"saveSpotifyAccount"},
+      "description": "TRANSLATE.AUTOSTART_SETTINGS_DESC",
+      "onSave": {
+        "type": "controller",
+        "endpoint": "music_service/rpi_receiver",
+        "method": "setUIConfig"
+      },
       "saveButton": {
-        "label": "Save",
+        "label": "TRANSLATE.SAVE",
         "data": [
-          "username",
-          "password",
-          "bitrate"
+          "playFromLastPosition", "autostartDelay"
         ]
       },
       "content": [
         {
-          "id": "username",
-          "type":"text",
-          "element": "input",
-          "doc": "This is the username of your Spotify account",
-          "label": "Username",
-          "value": ""
-        },
-        {
-          "id": "password",
-          "type":"password",
-          "element": "input",
-          "doc": "This is the password of your Spotify account",
-          "label": "Password",
-          "value": ""
-        },
-        {
-          "id":"bitrate",
+          "id": "playFromLastPosition",
           "element": "switch",
-          "doc": "High bitrate",
-          "label": "Set for high bitrate",
-          "value": true
+          "doc": "TRANSLATE.AUTOSTART_SAVEFROMLASTPOS_DOC",
+          "label": "TRANSLATE.AUTOSTART_SAVEFROMLASTPOS",
+          "value": false
+        },
+        {
+          "id": "autostartDelay",
+          "type": "number",
+          "element": "input",
+          "doc": "TRANSLATE.AUTOSTART_DELAY_DOC",
+          "label": "TRANSLATE.AUTOSTART_DELAY",
+          "value": 20000
         }
       ]
     }
   ]
+
 }
