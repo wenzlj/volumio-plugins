@@ -39,7 +39,7 @@ rpiReceiver.prototype.onStart = function() {
 
 	// Once the Plugin has successfull started resolve the promise
 	defer.resolve();
-
+    self.addToBrowseSources();
     return defer.promise;
 };
 
@@ -111,14 +111,23 @@ rpiReceiver.prototype.setConf = function(varName, varValue) {
 rpiReceiver.prototype.addToBrowseSources = function () {
 
 	// Use this function to add your music service plugin to music sources
-    var data = {name: 'rpi-receiver', uri: 'FM/AM-Radio',plugin_type:'music_service',plugin_name:'spop'};
+    var data = {
+        name: 'rpi-receiver',
+        uri: 'FM/AM-Radio',
+        plugin_type:'music_service',
+        plugin_name:'FM/AM-Radio',
+        albumart: '/albumart?sourceicon=music_service/rpi_receiver/radio.svg'
+    };
     this.commandRouter.volumioAddToBrowseSources(data);
 };
 
 rpiReceiver.prototype.handleBrowseUri = function (curUri) {
     var self = this;
 
-    //self.commandRouter.logger.info(curUri);
+    //Send a Message to the User, waiting for radiostations
+    self.commandRouter.pushToastMessage('info', 'rpi_receiver', 'Searching for radiostations.');
+
+
     var response;
     
     return response;
