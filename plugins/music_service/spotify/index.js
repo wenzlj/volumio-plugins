@@ -43,7 +43,12 @@ ControllerSpop.prototype.getConfigurationFiles = function()
 }
 
 ControllerSpop.prototype.addToBrowseSources = function () {
-	var data = {name: 'Spotify', uri: 'spotify',plugin_type:'music_service',plugin_name:'spop', albumart: '/albumart?sourceicon=music_service/spop/spotify.svg'};
+	var data = {
+		name: 'Spotify',
+		uri: 'spotify',
+		plugin_type:'music_service',
+		plugin_name:'spop',
+		albumart: '/albumart?sourceicon=music_service/spop/spotify.svg'};
 	this.commandRouter.volumioAddToBrowseSources(data);
 };
 

@@ -1,17 +1,18 @@
 {
 	"name": "rpi_receiver",
-	"version": "1.0.0",
+	"version": "0.0.2",
 	"description": "Add controls for the Rpi-receiver. Made by HTL-Steyr. Redirect alsa steam to output.",
 	"main": "index.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
-	"author": "ahrer_kamleitner_wenzl",
-	"license": "ISC",
+	"author": "Ahrer, Kamleitner, Wenzl (HTL Steyr)",
+	"license": "GPL",
 	"volumio_info": {
-		"prettyName": "rpi_receiver",
+		"prettyName": "AM/FM Receiver",
 		"icon": "fa-lightbulb-o",
-		"plugin_type": "music_service"
+		"plugin_type": "music_service",
+		"boot_priority": 12
 	},
 	"dependencies": {
 		"fs-extra": "^0.28.0",
