@@ -72,10 +72,6 @@ rpiReceiver.prototype.getUIConfig = function() {
         __dirname + '/UIConfig.json')
         .then(function(uiconf)
         {
-			//Test
-			uiconf.sections[0].content[0].value = config.get('playFromLastPosition');
-			uiconf.sections[0].content[1].value = config.get('autostartDelay');
-			//
 
             defer.resolve(uiconf);
         })
