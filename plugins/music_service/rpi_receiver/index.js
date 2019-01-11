@@ -125,7 +125,8 @@ rpiReceiver.prototype.handleBrowseUri = function (curUri) {
     var self = this;
 
     //Send a Message to the User, waiting for radiostations
-    self.commandRouter.pushToastMessage('info', 'rpi_receiver', 'Searching for radiostations.');
+    //self.commandRouter.pushToastMessage('info', 'rpi_receiver', 'Searching for radiostations.');
+
 
 
     var response;

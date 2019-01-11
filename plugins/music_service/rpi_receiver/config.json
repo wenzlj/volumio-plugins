@@ -1,3 +1,14 @@
 {
- 
+  "enabled": {
+    "type": "boolean",
+    "value": true
+  },
+  "contraband": {
+    "type": "boolean",
+    "value": true
+  },
+  "results_limit": {
+    "type": "number",
+    "value": 50
+  }
 }

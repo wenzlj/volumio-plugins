@@ -10,4 +10,4 @@ sudo apt-get -y install
 # Then use it to differentiate your install
 
 #requred to end the plugin install
-echo "plugininstallend"
+echo "rpi receiver installed"
