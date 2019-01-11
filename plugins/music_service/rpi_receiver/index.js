@@ -18,6 +18,13 @@ function rpiReceiver(context) {
 
 }
 
+module.exports = ExamplePlugin;
+function ExamplePlugin(context) {
+	var self = this;
+	self.context = context;
+	self.commandRouter = this.context.coreCommand;
+}
+
 
 
 rpiReceiver.prototype.onVolumioStart = function() {
@@ -119,6 +126,8 @@ rpiReceiver.prototype.addToBrowseSources = function () {
         albumart: '/albumart?sourceicon=music_service/rpi_receiver/radio.svg'
     };
     this.commandRouter.volumioAddToBrowseSources(data);
+
+	self.commandRouter.pushToastMessage('Step 1', "Add function", "Added plugin to music sources");
 };
 
 rpiReceiver.prototype.handleBrowseUri = function (curUri) {
@@ -127,7 +136,7 @@ rpiReceiver.prototype.handleBrowseUri = function (curUri) {
     //Send a Message to the User, waiting for radiostations
     //self.commandRouter.pushToastMessage('info', 'rpi_receiver', 'Searching for radiostations.');
 
-
+	self.commandRouter.pushToastMessage('Step 2', "handleBrowseUri", "Here is handleBrowseUri");
 
     var response;
     
