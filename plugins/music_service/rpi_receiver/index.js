@@ -122,147 +122,197 @@ rpiReceiver.prototype.addToBrowseSources = function () {
 };
 
 rpiReceiver.prototype.handleBrowseUri = function (curUri) {
-    var self = this;
+	var self = this;
+	self.logger.info('handleBrowseUri: ' + uri);
+	self.commandRouter.pushToastMessage('info', 'rpi receiver', 'Debug 1');
 
-    //Send a Message to the User, waiting for radiostations
-	/*
-	var sys = require('sys')
-	var exec = require('child_process').exec;
-	function puts(error, stdout, stderr) { sys.puts(stdout) }
-	exec("ls -la", puts);
-	*/
-    var response;
-    return response;
-};
+	if (uri.startsWith('rpiReceiver')) {
+		if (uri === 'rpiReceiver') { //root
+			return self.getRootContent();
+		}
+
+
+		var response;
+		return response;
+	}
+	;
 
 
 // Define a method to clear, add, and play an array of tracks
-rpiReceiver.prototype.clearAddPlayTrack = function(track) {
-	var self = this;
-	self.commandRouter.pushConsoleMessage('[' + Date.now() + '] ' + 'rpiReceiver::clearAddPlayTrack');
+	rpiReceiver.prototype.clearAddPlayTrack = function (track) {
+		var self = this;
+		self.commandRouter.pushConsoleMessage('[' + Date.now() + '] ' + 'rpiReceiver::clearAddPlayTrack');
 
-	self.commandRouter.logger.info(JSON.stringify(track));
+		self.commandRouter.logger.info(JSON.stringify(track));
 
-	return self.sendSpopCommand('uplay', [track.uri]);
-};
+		return self.sendSpopCommand('uplay', [track.uri]);
+	};
 
-rpiReceiver.prototype.seek = function (timepos) {
-    this.commandRouter.pushConsoleMessage('[' + Date.now() + '] ' + 'rpiReceiver::seek to ' + timepos);
+	rpiReceiver.prototype.seek = function (timepos) {
+		this.commandRouter.pushConsoleMessage('[' + Date.now() + '] ' + 'rpiReceiver::seek to ' + timepos);
 
-    return this.sendSpopCommand('seek '+timepos, []);
-};
+		return this.sendSpopCommand('seek ' + timepos, []);
+	};
 
 // Stop
-rpiReceiver.prototype.stop = function() {
-	var self = this;
-	self.commandRouter.pushConsoleMessage('[' + Date.now() + '] ' + 'rpiReceiver::stop');
+	rpiReceiver.prototype.stop = function () {
+		var self = this;
+		self.commandRouter.pushConsoleMessage('[' + Date.now() + '] ' + 'rpiReceiver::stop');
 
 
-};
+	};
 
 // Spop pause
-rpiReceiver.prototype.pause = function() {
-	var self = this;
-	self.commandRouter.pushConsoleMessage('[' + Date.now() + '] ' + 'rpiReceiver::pause');
+	rpiReceiver.prototype.pause = function () {
+		var self = this;
+		self.commandRouter.pushConsoleMessage('[' + Date.now() + '] ' + 'rpiReceiver::pause');
 
 
-};
+	};
 
 // Get state
-rpiReceiver.prototype.getState = function() {
-	var self = this;
-	self.commandRouter.pushConsoleMessage('[' + Date.now() + '] ' + 'rpiReceiver::getState');
+	rpiReceiver.prototype.getState = function () {
+		var self = this;
+		self.commandRouter.pushConsoleMessage('[' + Date.now() + '] ' + 'rpiReceiver::getState');
 
 
-};
+	};
 
 //Parse state
-rpiReceiver.prototype.parseState = function(sState) {
-	var self = this;
-	self.commandRouter.pushConsoleMessage('[' + Date.now() + '] ' + 'rpiReceiver::parseState');
+	rpiReceiver.prototype.parseState = function (sState) {
+		var self = this;
+		self.commandRouter.pushConsoleMessage('[' + Date.now() + '] ' + 'rpiReceiver::parseState');
 
-	//Use this method to parse the state and eventually send it with the following function
-};
+		//Use this method to parse the state and eventually send it with the following function
+	};
 
 // Announce updated State
-rpiReceiver.prototype.pushState = function(state) {
-	var self = this;
-	self.commandRouter.pushConsoleMessage('[' + Date.now() + '] ' + 'rpiReceiver::pushState');
+	rpiReceiver.prototype.pushState = function (state) {
+		var self = this;
+		self.commandRouter.pushConsoleMessage('[' + Date.now() + '] ' + 'rpiReceiver::pushState');
 
-	return self.commandRouter.servicePushState(state, self.servicename);
-};
-
-
-rpiReceiver.prototype.explodeUri = function(uri) {
-	var self = this;
-	var defer=libQ.defer();
-
-	// Mandatory: retrieve all info for a given URI
-
-	return defer.promise;
-};
-
-rpiReceiver.prototype.getAlbumArt = function (data, path) {
-
-	var artist, album;
-
-	if (data != undefined && data.path != undefined) {
-		path = data.path;
-	}
-
-	var web;
-
-	if (data != undefined && data.artist != undefined) {
-		artist = data.artist;
-		if (data.album != undefined)
-			album = data.album;
-		else album = data.artist;
-
-		web = '?web=' + nodetools.urlEncode(artist) + '/' + nodetools.urlEncode(album) + '/large'
-	}
-
-	var url = '/albumart';
-
-	if (web != undefined)
-		url = url + web;
-
-	if (web != undefined && path != undefined)
-		url = url + '&';
-	else if (path != undefined)
-		url = url + '?';
-
-	if (path != undefined)
-		url = url + 'path=' + nodetools.urlEncode(path);
-
-	return url;
-};
+		return self.commandRouter.servicePushState(state, self.servicename);
+	};
 
 
+	rpiReceiver.prototype.explodeUri = function (uri) {
+		var self = this;
+		var defer = libQ.defer();
+
+		// Mandatory: retrieve all info for a given URI
+
+		return defer.promise;
+	};
+
+	rpiReceiver.prototype.getAlbumArt = function (data, path) {
+
+		var artist, album;
+
+		if (data != undefined && data.path != undefined) {
+			path = data.path;
+		}
+
+		var web;
+
+		if (data != undefined && data.artist != undefined) {
+			artist = data.artist;
+			if (data.album != undefined)
+				album = data.album;
+			else album = data.artist;
+
+			web = '?web=' + nodetools.urlEncode(artist) + '/' + nodetools.urlEncode(album) + '/large'
+		}
+
+		var url = '/albumart';
+
+		if (web != undefined)
+			url = url + web;
+
+		if (web != undefined && path != undefined)
+			url = url + '&';
+		else if (path != undefined)
+			url = url + '?';
+
+		if (path != undefined)
+			url = url + 'path=' + nodetools.urlEncode(path);
+
+		return url;
+	};
 
 
+	rpiReceiver.prototype.search = function (query) {
+		var self = this;
+		var defer = libQ.defer();
 
-rpiReceiver.prototype.search = function (query) {
-	var self=this;
-	var defer=libQ.defer();
+		// Mandatory, search. You can divide the search in sections using following functions
 
-	// Mandatory, search. You can divide the search in sections using following functions
+		return defer.promise;
+	};
 
-	return defer.promise;
-};
+	rpiReceiver.prototype.searchArtists = function (results) {
 
-rpiReceiver.prototype.searchArtists = function (results) {
+	};
 
-};
+	rpiReceiver.prototype.searchAlbums = function (results) {
 
-rpiReceiver.prototype.searchAlbums = function (results) {
+	};
 
-};
-
-rpiReceiver.prototype.searchPlaylists = function (results) {
+	rpiReceiver.prototype.searchPlaylists = function (results) {
 
 
-};
+	};
 
-rpiReceiver.prototype.searchTracks = function (results) {
+	rpiReceiver.prototype.searchTracks = function (results) {
 
-};
+	};
+}
+rpiReceiver.prototype.getRootContent = function () {
+
+	return libQ.resolve(
+		{
+			navigation: {
+				prev: {
+					uri: '/'
+				},
+				lists:
+					[
+						{
+							title: 'AM/FM Receiver',
+							icon: 'fa fa-radio',
+							availableListViews: ['list', 'grid'],
+
+							/*items: [
+								{
+									service: 'youtube',
+									type: 'folder',
+									title: ' Activities',
+									icon: 'fa fa-folder-open-o',
+									uri: 'youtube/root/activities'
+								},
+								{
+									service: 'youtube',
+									type: 'folder',
+									title: 'Subscriptions',
+									icon: 'fa fa-folder-open-o',
+									uri: 'youtube/root/subscriptions'
+								},
+								{
+									service: 'youtube',
+									type: 'folder',
+									title: 'My Playlists',
+									icon: 'fa fa-folder-open-o',
+									uri: 'youtube/root/playlists'
+								},
+								{
+									service: 'youtube',
+									type: 'folder',
+									title: 'Liked Videos',
+									icon: 'fa fa-folder-open-o',
+									uri: 'youtube/root/likedVideos'
+								}
+							]*/
+						}
+					]
+			}
+		});
+}
