@@ -18,14 +18,6 @@ function rpiReceiver(context) {
 
 }
 
-module.exports = ExamplePlugin;
-function ExamplePlugin(context) {
-	var self = this;
-	self.context = context;
-	self.commandRouter = this.context.coreCommand;
-}
-
-
 
 rpiReceiver.prototype.onVolumioStart = function() {
 
@@ -120,29 +112,28 @@ rpiReceiver.prototype.addToBrowseSources = function () {
 	// Use this function to add your music service plugin to music sources
     var data = {
         name: 'rpi-receiver',
-        uri: 'FM/AM-Radio',
+        uri: 'etc',
         plugin_type:'music_service',
         plugin_name:'FM/AM-Radio',
         albumart: '/albumart?sourceicon=music_service/rpi_receiver/radio.svg'
     };
     this.commandRouter.volumioAddToBrowseSources(data);
 
-	self.commandRouter.pushToastMessage('Step 1', "Add function", "Added plugin to music sources");
 };
 
 rpiReceiver.prototype.handleBrowseUri = function (curUri) {
     var self = this;
 
     //Send a Message to the User, waiting for radiostations
-    //self.commandRouter.pushToastMessage('info', 'rpi_receiver', 'Searching for radiostations.');
-
-	self.commandRouter.pushToastMessage('Step 2', "handleBrowseUri", "Here is handleBrowseUri");
-
+	/*
+	var sys = require('sys')
+	var exec = require('child_process').exec;
+	function puts(error, stdout, stderr) { sys.puts(stdout) }
+	exec("ls -la", puts);
+	*/
     var response;
-    
     return response;
 };
-
 
 
 // Define a method to clear, add, and play an array of tracks
