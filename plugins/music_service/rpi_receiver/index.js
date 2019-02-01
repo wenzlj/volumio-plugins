@@ -114,29 +114,29 @@ rpiReceiver.prototype.addToBrowseSources = function () {
         name: 'rpi-receiver',
         uri: 'etc',
         plugin_type:'music_service',
-        plugin_name:'FM/AM-Radio',
+        plugin_name:'rpi_receiver',
         albumart: '/albumart?sourceicon=music_service/rpi_receiver/radio.svg'
     };
     this.commandRouter.volumioAddToBrowseSources(data);
+
+	self.commandRouter.pushToastMessage('info', "Add function", "Added plugin to music sources");
+
 
 };
 
 rpiReceiver.prototype.handleBrowseUri = function (curUri) {
 	var self = this;
 	self.logger.info('handleBrowseUri: ' + uri);
-	self.commandRouter.pushToastMessage('info', 'rpi receiver', 'Debug 1');
+	self.commandRouter.pushToastMessage('info', 'rpi receiver', ''+ uri);
 
-	if (uri.startsWith('rpiReceiver')) {
-		if (uri === 'rpiReceiver') { //root
+	if (uri.startsWith('rpi_receiver')) {
+		if (uri === 'rpi_receiver') { //root
 			return self.getRootContent();
 		}
 
 
-		var response;
-		return response;
 	}
-	;
-
+	return libQ.reject();
 
 // Define a method to clear, add, and play an array of tracks
 	rpiReceiver.prototype.clearAddPlayTrack = function (track) {
@@ -268,6 +268,8 @@ rpiReceiver.prototype.handleBrowseUri = function (curUri) {
 }
 rpiReceiver.prototype.getRootContent = function () {
 
+	self.commandRouter.pushToastMessage('info', 'rpi receiver', ''+ uri);
+
 	return libQ.resolve(
 		{
 			navigation: {
@@ -281,36 +283,36 @@ rpiReceiver.prototype.getRootContent = function () {
 							icon: 'fa fa-radio',
 							availableListViews: ['list', 'grid'],
 
-							/*items: [
+							items: [
 								{
 									service: 'youtube',
 									type: 'folder',
 									title: ' Activities',
 									icon: 'fa fa-folder-open-o',
-									uri: 'youtube/root/activities'
+									uri: 'rpiReceiver/root/activities'
 								},
 								{
 									service: 'youtube',
 									type: 'folder',
 									title: 'Subscriptions',
 									icon: 'fa fa-folder-open-o',
-									uri: 'youtube/root/subscriptions'
+									uri: 'rpiReceiver/root/subscriptions'
 								},
 								{
 									service: 'youtube',
 									type: 'folder',
 									title: 'My Playlists',
 									icon: 'fa fa-folder-open-o',
-									uri: 'youtube/root/playlists'
+									uri: 'rpiReceiver/root/playlists'
 								},
 								{
 									service: 'youtube',
 									type: 'folder',
 									title: 'Liked Videos',
 									icon: 'fa fa-folder-open-o',
-									uri: 'youtube/root/likedVideos'
+									uri: 'rpiReceiver/root/likedVideos'
 								}
-							]*/
+							]
 						}
 					]
 			}

@@ -22,19 +22,27 @@
       },
       "content": [
         {
-          "id": "playFromLastPosition",
+          "id": "alarmSwitch",
           "element": "switch",
-          "doc": "TRANSLATE.AUTOSTART_SAVEFROMLASTPOS_DOC",
-          "label": "TRANSLATE.AUTOSTART_SAVEFROMLASTPOS",
+          "doc": "TRANSLATE.ALARM_SWITCH_DOC",
+          "label": "TRANSLATE.ALARM_SWITCH",
           "value": false
         },
         {
-          "id": "autostartDelay",
+          "id": "alarmTime",
           "type": "number",
           "element": "input",
-          "doc": "TRANSLATE.AUTOSTART_DELAY_DOC",
-          "label": "TRANSLATE.AUTOSTART_DELAY",
-          "value": 20000
+          "doc": "TRANSLATE.ALARM_TIME_DOC",
+          "label": "TRANSLATE.ALARM_TIME",
+          "value": 600
+        },
+        {
+          "id": "busStation",
+          "type": "text",
+          "element": "input",
+          "doc": "TRANSLATE.BUSSTATION_DOC",
+          "label": "TRANSLATE.BUSSTATION",
+          "value": "Waldneukirchen Emsenhub"
         }
       ]
     }

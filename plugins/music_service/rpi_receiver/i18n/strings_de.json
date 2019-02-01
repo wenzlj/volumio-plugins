@@ -1,4 +1,12 @@
 {
   "PLUGIN_CONFIGURATION":"AM/FM Receiver Plugin Einstellungen",
-  "SAVE":"Speichern"
+  "SAVE":"Speichern",
+  "RPISETTINGS": "Einstellungen für den RPI",
+  "AUTOSTART_SETTINGS_DESC": "Einstellungen für den RPI",
+  "ALARM_SWITCH":"Alarm ON/OFF",
+  "ALARM_SWITCH_DOC":"Umschalten des Weckers",
+  "ALARM_TIME":"Wecker",
+  "ALARM_TIME_DOC": "Weckzeit bevor der Bus ankommt",
+  "BUSSTATION_DOC":"Genauer Name der Busstation",
+  "BUSSTATION":"Busstation"
 }

@@ -13,10 +13,5 @@
 		"icon": "fa-lightbulb-o",
 		"plugin_type": "music_service",
 		"boot_priority": 12
-	},
-	"dependencies": {
-		"fs-extra": "^0.28.0",
-		"kew": "^0.7.0",
-		"v-conf": "^1.4.0"
 	}
 }

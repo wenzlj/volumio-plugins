@@ -1,4 +1,12 @@
 {
   "PLUGIN_CONFIGURATION":"AM/FM Receiver plugin configuration",
-  "SAVE":"Save"
+  "SAVE":"Save",
+  "RPISETTINGS": "Settings for the RPI",
+  "AUTOSTART_SETTINGS_DESC": "Settings for the RPI",
+  "ALARM_SWITCH":"Alarm ON/OFF",
+  "ALARM_SWITCH_DOC":"Toggle alarm",
+  "ALARM_TIME":"Alarm",
+  "ALARM_TIME_DOC": "Alarm time before bus arrival",
+  "BUSSTATION_DOC":"Exact name of busstation",
+  "BUSSTATION":"Busstation"
 }
