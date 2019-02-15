@@ -72,6 +72,11 @@ rpiReceiver.prototype.getUIConfig = function() {
         .then(function(uiconf)
         {
 
+			uiconf.sections[0].content[0].value = self.config.get('alarmSwitch');
+			uiconf.sections[0].content[1].value = self.config.get('alarmTime');
+			uiconf.sections[0].content[2].value = self.config.get('busStation');
+			//TODO: where get stuff saved?
+
             defer.resolve(uiconf);
         })
         .fail(function()
@@ -101,6 +106,12 @@ rpiReceiver.prototype.setConf = function(varName, varValue) {
 	//Perform your installation tasks here
 };
 
+rpiReceiver.prototype.setupAlarm = function(){
+	var self = this;
+	//TODO: Make alarm working -> look at auxilio folder fkamleit
+	//TODO: Implement starting the python programm and receive parameter
+};
+
 
 
 // Playback Controls ---------------------------------------------------------------------------------------
@@ -119,7 +130,7 @@ rpiReceiver.prototype.addToBrowseSources = function () {
     };
     this.commandRouter.volumioAddToBrowseSources(data);
 
-	self.commandRouter.pushToastMessage('info', "Add function", "Added plugin to music sources");
+	//self.commandRouter.pushToastMessage('info', "Add function", "Added plugin to music sources");
 
 
 };
@@ -270,7 +281,7 @@ rpiReceiver.prototype.getRootContent = function () {
 
 	self.commandRouter.pushToastMessage('info', 'rpi receiver', ''+ uri);
 
-	return libQ.resolve(
+	return libQ.resolve(		//TODO: make brows URI working
 		{
 			navigation: {
 				prev: {
@@ -283,7 +294,7 @@ rpiReceiver.prototype.getRootContent = function () {
 							icon: 'fa fa-radio',
 							availableListViews: ['list', 'grid'],
 
-							items: [
+							items: [	//TODO: Buttons for next freq, etc.
 								{
 									service: 'youtube',
 									type: 'folder',
